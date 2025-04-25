@@ -9,7 +9,9 @@ const listAllConsumerController = require('../controllers/userController/listCon
 const viewAdminDetailController = require('../controllers/userController/viewAdminDetail');
 const viewConsumerDetailController = require('../controllers/userController/viewConsumerDetail.js');
 const removeUserController = require('../controllers/userController/removeUser');
-// const countAllUserController = require('../controllers/userController/countTotalUser');
+const updateUserInfoController = require('../controllers/userController/updateUserInfo.js');
+const countAllUserController = require('../controllers/userController/countTotalUser');
+
 //Use the function from controller
 router.post('/addUser',addUserController.addUser);
 router.get('/listUser',listUserController.listAllUser);
@@ -18,5 +20,7 @@ router.get('/listConsumer',listAllConsumerController.listAllConsumer);
 router.get('/adminDetail/:id',viewAdminDetailController.viewAdminDetail);
 router.get('/consumerDetail/:id',viewConsumerDetailController.viewCosumerDetail);
 router.post('/removeUser',removeUserController.removeUser);
-// router.get('/countTotalUser',countAllUserController.countTotalUser);
+router.get('/countTotalUser',countAllUserController.countTotalUser);
+router.post('/updateUserInfo',updateUserInfoController.updateUserInfo);
+
 module.exports = router;

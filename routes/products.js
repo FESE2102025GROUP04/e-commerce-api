@@ -7,11 +7,14 @@ const addProductController = require('../controllers/productController/addProduc
 const removeProductController = require('../controllers/productController/removeProduct');
 const updateProdcutController = require('../controllers/productController/updateProduct');
 const countTotalProductController = require('../controllers/productController/countTotalProduct');
-
+const viewProductDetialController = require('../controllers/productController/viewProductDetail');
 // Use the function from the controller
 router.post('/addProducts',addProductController.addProduct)
 router.get('/listProducts', listProductController.listProduct);
 router.post('/removeProduct',removeProductController.removeProduct);
 router.post('/updateProdct',updateProdcutController.updateProdcut);
 router.get('/countTotalProduct',countTotalProductController.countTotalProduct);
+router.get('/viewProductDetail/:id',viewProductDetialController.viewProductDetail);
+
+
 module.exports = router;
