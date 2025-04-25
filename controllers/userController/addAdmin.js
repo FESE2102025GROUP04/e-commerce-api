@@ -10,7 +10,7 @@ const addUser = async (req, res) => {
 
         const admin = user.map(user => ({
             ...user,
-            role_id: 1
+            roleId: 1
         }))
 
         console.log("User have been added to DB:", user);

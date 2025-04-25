@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Product',
-    underscored: true, // for created_at, updated_at, etc.
+    
   });
   return Product;
 };
