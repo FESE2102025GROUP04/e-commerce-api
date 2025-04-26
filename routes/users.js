@@ -13,14 +13,14 @@ const updateUserInfoController = require('../controllers/userController/updateUs
 const countAllUserController = require('../controllers/userController/countTotalUser');
 const searchConsumerController = require('../controllers/userController/searchConsumer');
 //Use the function from controller
-router.post('/addUser',addUserController.addUser);
-router.get('/listUser',listUserController.listAllUser);
-router.get('/listAdmin',listAllAdminController.listAllAdmin);
-router.get('/listConsumer',listAllConsumerController.listAllConsumer);
-router.get('/adminDetail/:id',viewAdminDetailController.viewAdminDetail);
-router.get('/consumerDetail/:id',viewConsumerDetailController.viewCosumerDetail);
-router.post('/removeUser',removeUserController.removeUser);
-router.get('/countTotalUser',countAllUserController.countTotalUser);
-router.post('/updateUserInfo',updateUserInfoController.updateUserInfo);
-router.get('/searchConsumer',searchConsumerController.serachForConsumer);
+router.post('/addUser', addUserController.addUser);
+router.get('/listUser', listUserController.listAllUser);
+router.get('/listAdmin', listAllAdminController.listAllAdmin);
+router.get('/listConsumer', listAllConsumerController.listAllConsumer);
+router.get('/adminDetail/:id', viewAdminDetailController.viewAdminDetail);
+router.get('/consumerDetail/:id', viewConsumerDetailController.viewCosumerDetail);
+router.post('/removeUser', removeUserController.removeUser);
+router.get('/countTotalUser', countAllUserController.countTotalUser);
+router.post('/updateUserInfo', updateUserInfoController.updateUserInfo);
+router.get('/searchConsumer', searchConsumerController.searchForConsumer);
 module.exports = router;
