@@ -2,7 +2,7 @@ const db = require('../../models')
 
 const addUser = async (req, res) => {
     try {
-        const user = req.body;
+        let user = req.body;
 
         if (!Array.isArray(user)) {
             user = [user];
