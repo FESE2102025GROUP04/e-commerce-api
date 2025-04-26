@@ -12,6 +12,8 @@ const removeUserController = require('../controllers/userController/removeUser')
 const updateUserInfoController = require('../controllers/userController/updateUserInfo');
 const countAllUserController = require('../controllers/userController/countTotalUser');
 const searchConsumerController = require('../controllers/userController/searchConsumer');
+const searchAdminController = require('../controllers/userController/searchAdmin.js');
+
 //Use the function from controller
 router.post('/addUser', addUserController.addUser);
 router.get('/listUser', listUserController.listAllUser);
@@ -23,4 +25,5 @@ router.post('/removeUser', removeUserController.removeUser);
 router.get('/countTotalUser', countAllUserController.countTotalUser);
 router.post('/updateUserInfo', updateUserInfoController.updateUserInfo);
 router.get('/searchConsumer', searchConsumerController.searchForConsumer);
+router.get('/searchAdmin',searchAdminController.searchForAdmin);
 module.exports = router;
