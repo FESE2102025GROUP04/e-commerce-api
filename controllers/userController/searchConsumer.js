@@ -20,7 +20,20 @@ const serachForConsumer = async (req, res) => {
             },
             attributes: ["userName", "email"]
         })
+          
 
+
+
+
+
+
+
+
+
+
+
+
+        
         if (matchUser.length === 0) {
             return res.json({ message: "User does not exist" });
         }
