@@ -5,7 +5,7 @@ const listAllConsumer= async (req, res) => {
     try {
         const consumer = await db.User.findAll({
             where: { roleId: 0 },
-            attributes: [ "username" ]
+            attributes: [ "userName" ]
         });
 
 
