@@ -3,7 +3,7 @@ const { getDateFilter } = require("../../helper/dateFilter");
 
 
 const listAllUser = async (req, res) => {
-    
+
     const whereCondition = getDateFilter(req.query.startDate, req.query.endDate);
 
 

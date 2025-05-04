@@ -7,8 +7,7 @@ const logger = require('morgan');
 // Import the products route
 const userRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
-
-// const categoryRouter = require('./routes/categorys'); 
+const categoryRouter = require('./routes/category');
 const app = express();
 
 // Set up middleware
@@ -20,7 +19,7 @@ app.use(cookieParser()); // Parses cookies
 // Use the products router for routes starting with /products
 app.use('/products', productsRouter);
 app.use('/users', userRouter);
-// app.use('/categories',categoryRouter);
+app.use('/category',categoryRouter)
 // Handle 404 errors (page not found)
 app.use((req, res) => {
   res.status(404).send('Not Found');

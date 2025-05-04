@@ -1,6 +1,4 @@
-const { Op } = require('sequelize');
-
-
+const { Op, fn, col, where } = require('sequelize');
 const db = require('../../models');
 
 const searchForConsumer = async (req, res) => {
@@ -8,31 +6,30 @@ const searchForConsumer = async (req, res) => {
         const { keyword } = req.body;
 
         if (!keyword) {
-            return;
+            return res.status(400).json({ error: "Keyword is required" });
         }
+
+        const lowerKeyword = keyword.toLowerCase();
 
         const matchUser = await db.User.findAll({
             where: {
-                roleId: 1, // Assuming you meant "roleId" instead of "roldId"
+                roleId: 1,
                 [Op.or]: [
-                    { userName: { [Op.like]: `${keyword}%` } },
-                    { email: { [Op.like]: `${keyword}%` } }
+                    where(fn('LOWER', col('userName')), { [Op.like]: `${lowerKeyword}%` }),
+                    where(fn('LOWER', col('email')), { [Op.like]: `${lowerKeyword}%` })
                 ]
             },
             attributes: ["userName", "email"]
-        });  
+        });
 
-if (matchUser.length === 0) {
-    return res.json({ message: "Consumer does not exist" });
-}
-else {
-    return res.json(matchUser);
-}
+        if (matchUser.length === 0) {
+            return res.json({ message: "Consumer does not exist" });
+        } else {
+            return res.json(matchUser);
+        }
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
     }
-    catch (err) {
-    return res.json({ error: err.message })
-}
-
-}
+};
 
 module.exports = { searchForConsumer };
