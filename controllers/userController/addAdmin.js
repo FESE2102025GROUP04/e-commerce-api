@@ -15,8 +15,7 @@ const addUser = async (req, res) => {
             return {
                 ...user,
                 password: hashedPassword,
-                roleId: 1,
-                status: 1
+                roleId: 1
             };
         }));
 
