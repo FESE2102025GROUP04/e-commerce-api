@@ -32,7 +32,7 @@ router.post('/updateUserInfo', updateUserInfoController.updateUserInfo);
 router.get('/searchConsumer', searchConsumerController.searchForConsumer);
 router.get('/searchAdmin',searchAdminController.searchForAdmin);
 // router.post('/loginUser', userLoginController.loginController);
-router.get('/topUser', topUserController.getTop10UsersByTotalSpent);
+router.get('/   ', topUserController.getTop10UsersByTotalSpent);
 //Admin Dashboard
 router.get('/dashboard', verifyToken, roleMiddleware.requireAdmin, adminController.getDashboard);
 
