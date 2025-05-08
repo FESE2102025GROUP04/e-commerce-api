@@ -34,6 +34,7 @@ app.use('/upload', uploadRoutes);
 // Allow all origins (for development)
 app.use(cors());
 // Handle 404 errors (page not found)
+
 app.use((req, res) => {
   res.status(404).send('Not Found');
 });

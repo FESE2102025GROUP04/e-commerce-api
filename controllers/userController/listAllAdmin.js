@@ -5,13 +5,11 @@ const listAllAdmin = async (req, res) => {
     try {
         const admin = await db.User.findAll({
             where: { roleId: 1 },
-            attributes: ["userName"]
+            attributes: ["userName", "email", "status"]
         });
 
-
         return res.json(admin);
-    }
-    catch (err) {
+    } catch (err) {
         return res.status(500).json({ error: err.message });
     }
 }

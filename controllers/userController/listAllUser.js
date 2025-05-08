@@ -8,7 +8,7 @@ const listAllUser = async (req, res) => {
 
 
     const userTb = await db.User.findAll({
-        attributes: ["userName"],
+        attributes: ["userName", "email", "status"],
         where: whereCondition
     })
 

@@ -10,7 +10,7 @@ const updateCategoryController = require('../controllers/categoryController/upda
 //Use function from controller 
 
 router.post('/createCategory', createCategoryController.createCategory);
-router.get('/listCategory', listAllCategoryContrller.listCategories);
+router.get('/listCategory   ', listAllCategoryContrller.listCategories);
 router.get('/searchCategory', searchForCategoryController.searchForCategory);
 router.post('/updateCategoryInfo', updateCategoryController.updateCategory)
 module.exports = router
