@@ -10,7 +10,7 @@ const listCartItems = async (req, res) => {
         }
 
         const cartItems = await db.CartItem.findAll({
-            where: { userId },
+            where: { userId, status: 'active' },
             include: [
                 {
                     model: db.Product,

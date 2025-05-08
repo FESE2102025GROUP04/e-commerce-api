@@ -14,9 +14,21 @@ const listAdminOrders = async (req, res) => {
 
         const orders = await db.Order.findAll({
             where: whereClause,
-            include: [{ model: db.OrderItem }, { model: db.User }, { model: db.Address }],
+            include: [
+                { model: db.OrderItem },  
+                {
+                    model: db.User,       
+                    attributes: ['userName', 'email']
+                },
+                {
+                    model: db.Address,     
+                    attributes: { exclude: ['createdAt', 'updatedAt'] } 
+                }
+            ],
             order: [['createdAt', 'DESC']]
         });
+        
+        
 
         return res.json({ orders });
 

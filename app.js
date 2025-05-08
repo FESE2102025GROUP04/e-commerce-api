@@ -11,6 +11,8 @@ const categoryRouter = require('./routes/category');
 const addressRouter = require('./routes/adress');
 const cartItemRouter = require('./routes/cartItem');
 const orderRouter = require('./routes/order');
+const authRoutes = require('./routes/auth');
+const uploadRoutes = require('./routes/uploadRoutes');
 const app = express();
 
 // Set up middleware
@@ -26,6 +28,8 @@ app.use('/category',categoryRouter)
 app.use('/address', addressRouter);
 app.use('/cartItem',cartItemRouter);
 app.use('/order',orderRouter);
+app.use('/auth', authRoutes);
+app.use('/upload', uploadRoutes);
 // Handle 404 errors (page not found)
 app.use((req, res) => {
   res.status(404).send('Not Found');

@@ -21,23 +21,19 @@ const checkoutCart = async (req, res) => {
             addressId = defaultAddress.id;
         }
 
-
         const cartItems = await db.CartItem.findAll({
             where: { userId, status: 'active' },
             include: [{ model: db.Product }]
         });
 
-        console.log(cartItems);
-
         if (!cartItems.length) {
             return res.status(400).json({ error: 'No items in cart to checkout' });
         }
 
-
         let totalPrice = 0;
-        cartItems.forEach(item => {
+        for (const item of cartItems) {
             totalPrice += item.quantity * item.Product.price;
-        });
+        }
 
         const order = await db.Order.create({
             userId,
@@ -53,6 +49,17 @@ const checkoutCart = async (req, res) => {
                 quantity: item.quantity,
                 price: item.Product.price
             });
+
+            const product = await db.Product.findByPk(item.productId);
+            
+            if (product) {
+                if (product.stockQty >= item.quantity) {
+                    product.stockQty -= item.quantity;
+                    await product.save();
+                } else {
+                    return res.status(400).json({ error: `Not enough stock for product ${item.Product.name}` });
+                }
+            }
 
             item.status = 'completed';
             await item.save();

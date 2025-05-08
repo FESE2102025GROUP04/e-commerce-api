@@ -14,6 +14,11 @@ const countAllUserController = require('../controllers/userController/countTotal
 const searchConsumerController = require('../controllers/userController/searchConsumer');
 const searchAdminController = require('../controllers/userController/searchAdmin.js');
 const userLoginController = require('../controllers/userController/loginController.js');
+const topUserController = require('../controllers/userController/topUser.js');
+const adminController = require('../controllers/userController/adminDashboard.js')
+
+//Authentication
+const { verifyToken, roleMiddleware } = require('../controllers/authController/authentication.js');
 //Use the function from controller
 router.post('/addUser', addUserController.addUser);
 router.get('/listUser', listUserController.listAllUser);
@@ -26,5 +31,9 @@ router.get('/countTotalUser', countAllUserController.countTotalUser);
 router.post('/updateUserInfo', updateUserInfoController.updateUserInfo);
 router.get('/searchConsumer', searchConsumerController.searchForConsumer);
 router.get('/searchAdmin',searchAdminController.searchForAdmin);
-router.post('/loginUser', userLoginController.loginController);
+// router.post('/loginUser', userLoginController.loginController);
+router.get('/topUser', topUserController.getTop10UsersByTotalSpent);
+//Admin Dashboard
+router.get('/dashboard', verifyToken, roleMiddleware.requireAdmin, adminController.getDashboard);
+
 module.exports = router;

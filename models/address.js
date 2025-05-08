@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Address.belongsTo(models.User, { foreignKey: 'userId' });
+      Address.hasMany(models.Order, { foreignKey: 'addressId' });  // Address can have many orders
+
     }
   }
   Address.init({

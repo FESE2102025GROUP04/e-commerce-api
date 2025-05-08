@@ -5,27 +5,24 @@ const cancelOrder = async (req, res) => {
         const userId = req.params.userId;
         const { orderId } = req.body;
 
-
         console.log('req.body:', req.body);
 
         if (!userId) {
-            return res.status(400).json({ error: 'userId are required' });
+            return res.status(400).json({ error: 'userId is required' });
         }
 
         if (!orderId) {
-            return res.status(400).json({ error: 'orderId are required' });
+            return res.status(400).json({ error: 'orderId is required' });
         }
 
+        
+
         const order = await db.Order.findOne({
-            where: { id: orderId, userId }
+            where: { id: orderId }
         });
 
         if (!order) {
             return res.status(404).json({ error: 'Order not found' });
-        }
-
-        if (order.status === 'Delivering') {
-            return res.status(400).json({ error: 'Cannot cancel an order that is delivering' });
         }
 
         await db.OrderItem.destroy({
