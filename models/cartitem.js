@@ -27,6 +27,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    status: { 
+      type: DataTypes.STRING,
+      allowNull: false, 
+      defaultValue: "active",
+    },
   }, {
     sequelize,
     modelName: 'CartItem',
