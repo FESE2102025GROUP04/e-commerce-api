@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
+const cors = require('cors');
 // Import the products route
 const userRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
@@ -30,6 +30,9 @@ app.use('/cartItem',cartItemRouter);
 app.use('/order',orderRouter);
 app.use('/auth', authRoutes);
 app.use('/upload', uploadRoutes);
+
+// Allow all origins (for development)
+app.use(cors());
 // Handle 404 errors (page not found)
 app.use((req, res) => {
   res.status(404).send('Not Found');
