@@ -3,7 +3,7 @@ const db = require('../../models')
 const addProduct = async (req, res) => {
     try {
       const product = req.body;  
-      console.log("Received products: ", product);
+      console.log("Received products from Main: ", product);
 
       const productTb = await db.Product.bulkCreate(product);
       
