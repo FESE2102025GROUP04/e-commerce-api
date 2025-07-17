@@ -15,7 +15,7 @@ const filterProducts = async (req, res) => {
 
         const products = await db.Product.findAll({
             where: whereClause,
-            include: [db.Category]  // 🔥 remove the 'as' here
+            include: [db.Category]  
         });
 
         return res.status(200).json(products);
